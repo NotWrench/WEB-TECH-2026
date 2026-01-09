@@ -128,9 +128,24 @@ body {
   color: var(--foreground);
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   padding: 20px;
+}
+
+.title-container {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+.title-container h1 {
+  margin-bottom: 0;
+  font-size: 24px;
+  color: var(--foreground);
 }
 
 .container {
