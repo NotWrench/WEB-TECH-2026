@@ -5,11 +5,7 @@ plugins {
 
 android {
     namespace = "io.github.notwrench.emailsender"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "io.github.notwrench.emailsender"
@@ -40,7 +36,9 @@ android {
 }
 
 dependencies {
+    implementation("androidx.activity:activity-ktx:1.13.0")
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
