@@ -1,0 +1,30 @@
+name: Update Submodule
+
+on:
+  repository_dispatch:
+    types: [update-submodule]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update submodule
+        run: |
+          git submodule update --remote --merge
+
+      - name: Commit & push if changed
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            git config user.name "NotWrench"
+            git config user.email "notwrench401@gmail.com"
+            git add .
+            git commit -m "chore: auto-update submodule"
+            git push
+          fi
